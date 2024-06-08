@@ -3,8 +3,8 @@
 #include <string.h>
 #include "system_info.h"
 
+// /proc/stat 파일에서 CPU 정보를 읽어오는 함수
 void get_cpu_info(char *buffer) {
-    // CPU 사용량 정보를 수집하여 버퍼에 저장 (예시 파일 사용)
     FILE *fp = fopen("/proc/stat", "r");
     if (fp == NULL) {
         perror("fopen");
@@ -14,8 +14,8 @@ void get_cpu_info(char *buffer) {
     fclose(fp);
 }
 
+// /proc/meminfo 파일에서 메모리 정보를 읽어오는 함수
 void get_mem_info(char *buffer) {
-    // 메모리 사용량 정보를 수집하여 버퍼에 저장 (예시 파일 사용)
     FILE *fp = fopen("/proc/meminfo", "r");
     if (fp == NULL) {
         perror("fopen");
