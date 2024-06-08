@@ -4,10 +4,10 @@
 #include "system_info.h"
 
 void get_cpu_info(char *buffer) {
-    // CPU 사용량 정보를 수집하여 버퍼에 저장
-    FILE *fp = fopen("top -bn1 | grep 'Cpu(s)'", "r");
+    // CPU 사용량 정보를 수집하여 버퍼에 저장 (예시 파일 사용)
+    FILE *fp = fopen("/proc/stat", "r");
     if (fp == NULL) {
-        perror("popen");
+        perror("fopen");
         exit(EXIT_FAILURE);
     }
     fgets(buffer, 256, fp);
@@ -15,10 +15,10 @@ void get_cpu_info(char *buffer) {
 }
 
 void get_mem_info(char *buffer) {
-    // 메모리 사용량 정보를 수집하여 버퍼에 저장
-    FILE *fp = fopen("free -m | grep 'Mem:'", "r");
+    // 메모리 사용량 정보를 수집하여 버퍼에 저장 (예시 파일 사용)
+    FILE *fp = fopen("/proc/meminfo", "r");
     if (fp == NULL) {
-        perror("popen");
+        perror("fopen");
         exit(EXIT_FAILURE);
     }
     fgets(buffer, 256, fp);
