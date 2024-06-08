@@ -22,5 +22,5 @@ void get_mem_info(char *buffer) {
         exit(EXIT_FAILURE);
     }
     fgets(buffer, 256, fp);
-    pclose(fp);
+    fclose(fp);
 }
